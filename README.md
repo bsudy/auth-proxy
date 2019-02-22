@@ -16,6 +16,7 @@ Environment variables:
 * `BACKEND` - to requests are proxied to (_mandatory_)
 * `PROXY_HOST` - the hostname the proxy is available - falls back to the host name of the container.
 * `SCHEMA` - the schema via the proxy is available (defaults to `https`) - _Note:_ This is not the protocol how the proxy accepts. SSL termination is not a responsibility of this image.
+* `DISABLE_SSL_VERIFY` - disabled ssl verification, use if the backend SSL certificate is invalid (defaults to false).
 * `REMOTE_USER_EMAIL_SAML_ATTRIBUTE` - the SAML attribute to be sent as `Remote-User-Name header`
 * `REMOTE_USER_NAME_SAML_ATTRIBUTE` - the SAML attribute to be sent as `Remote-User-Email`
 * `REMOTE_USER_PREFERRED_USERNAME_SAML_ATTRIBUTE` - the SAML attribute to be sent as `Remote-User-Preferred-Username`

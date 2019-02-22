@@ -98,5 +98,15 @@ export REQUEST_HEADERS
 # configure Apache proxy and auth
 cat /etc/httpd/conf.d/proxy.conf.template | envsubst '$SCHEMA,$HOST,$BACKEND,$MELLON_PATH,$REQUEST_HEADERS' > /etc/httpd/conf.d/proxy.conf
 
+# Support proxy resutsts to SSL backend
+echo "SSLProxyEngine on" >> /etc/httpd/conf.d/ssl.conf
+
+if [ -n "$DISABLE_SSL_VERIFY" ]; then
+  # Ignore SSL certificate validity
+  echo "SSLProxyCheckPeerName off" >> /etc/httpd/conf.d/ssl.conf
+  echo "SSLProxyVerify none" >> /etc/httpd/conf.d/ssl.conf
+  echo "SSLProxyCheckPeerExpire off" >> /etc/httpd/conf.d/ssl.conf
+fi
+
 # Start apache
 httpd -DFOREGROUND
