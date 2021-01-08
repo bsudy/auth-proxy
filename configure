@@ -99,4 +99,4 @@ export REQUEST_HEADERS
 cat /etc/httpd/conf.d/proxy.conf.template | envsubst '$SCHEMA,$HOST,$BACKEND,$MELLON_PATH,$REQUEST_HEADERS' > /etc/httpd/conf.d/proxy.conf
 
 # Start apache
-httpd -DFOREGROUND
+exec httpd -DFOREGROUND
